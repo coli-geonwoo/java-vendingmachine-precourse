@@ -22,11 +22,21 @@ public class InputView {
         return Integer.parseInt(machineMoney);
     }
 
-    public static void inputProdctInfo(){
+    public static void inputProductInfo(){
         System.out.println(INPUT_PRODUCT_INFO_MESSAGE);
     }
-    public static void inputMoney(){
+    public static int inputMoney(){
         System.out.println(INPUT_MONEY_MESSAGE);
+        String money="";
+        try{
+            money= Console.readLine();
+            Validator.validateNonNumeric(money);
+            Validator.validateNumericBase(money);
+        }catch(IllegalArgumentException e){
+            System.out.println(e.getMessage());
+            return inputMoney();
+        }
+        return Integer.parseInt(money);
     }
     public static void inputProductName(){
         System.out.println(INPUT_PRODUCT_NAME_MESSAGE);
